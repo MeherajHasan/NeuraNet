@@ -1,0 +1,22 @@
+
+Epoch 0: Loss: 0.6996, Dice: 0.0413, IoU: 0.0211
+Epoch 0: Loss: 0.1662, Dice: 0.2989, IoU: 0.1935
+Epoch 1: Loss: 0.1510, Dice: 0.4858, IoU: 0.3359
+Epoch 2: Loss: 0.0909, Dice: 0.5527, IoU: 0.4053
+Epoch 3: Loss: 0.0749, Dice: 0.5833, IoU: 0.4382
+Epoch 4: Loss: 0.0622, Dice: 0.6650, IoU: 0.5209
+Epoch 5: Loss: 0.0578, Dice: 0.6811, IoU: 0.5423
+Epoch 6: Loss: 0.0560, Dice: 0.6908, IoU: 0.5526
+Epoch 7: Loss: 0.0551, Dice: 0.7042, IoU: 0.5660
+Epoch 8: Loss: 0.0537, Dice: 0.7281, IoU: 0.5930
+Epoch 9: Loss: 0.0493, Dice: 0.7415, IoU: 0.6111
+Epoch 10: Loss: 0.0509, Dice: 0.7358, IoU: 0.6045
+Epoch 11: Loss: 0.0534, Dice: 0.7307, IoU: 0.5948
+Epoch 12: Loss: 0.0508, Dice: 0.7259, IoU: 0.5924
+Epoch 13: Loss: 0.0506, Dice: 0.7517, IoU: 0.6182
+Epoch 14: Loss: 0.0494, Dice: 0.7597, IoU: 0.6285
+Epoch 15: Loss: 0.0500, Dice: 0.7511, IoU: 0.6203
+Epoch 16: Loss: 0.0456, Dice: 0.7742, IoU: 0.6473
+Epoch 17: Loss: 0.0497, Dice: 0.7599, IoU: 0.6300
+Epoch 18: Loss: 0.0618, Dice: 0.7013, IoU: 0.5569
+Epoch 19: Loss: 0.0450, Dice: 0.7735, IoU: 0.6534
