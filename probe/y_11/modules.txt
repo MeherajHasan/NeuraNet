@@ -1,0 +1,55 @@
+1. SPPF (Spatial Pyramid Pooling - Fast)
+
+Concept: SPPF extracts multi-scale features by pooling an image at varying sizes. Instead of running computationally expensive parallel pooling layers, it runs them sequentially to massively boost speed while maintaining the same receptive field.
++1
+
+Formula (Receptive Field Equivalence):
+
+MaxPool 
+5×5
+​	
+ (MaxPool 
+5×5
+​	
+ (X))≈MaxPool 
+9×9
+​	
+ (X)
+Example: Running a single 13×13 max-pooling operation requires 169 comparisons per pixel. SPPF achieves the exact same 13×13 coverage by running three sequential 5×5 operations, requiring only 25+25+25=75 comparisons. This cuts computational cost by more than half.
+
+2. C3k2 Block (Why it replaced C2f)
+
+Concept: C3k2 (Cross Stage Partial with kernel size 2) replaces YOLOv8's C2f block as the primary feature extractor. C2f utilized larger convolutions, whereas C3k2 utilizes two smaller, consecutive convolutions to achieve faster processing and parameter efficiency.
++4
+
+Formula (Receptive Field):
+
+RF 
+new
+​	
+ =RF 
+old
+​	
+ +(Kernel−1)×Stride
+Applying this: Two sequential 3×3 kernels cover the exact same receptive field (5) as one large 5×5 kernel (1+2+2=5).
+
+Example (Parameter Reduction): Assuming 256 input and output channels:
+
+One 5×5 filter (older style): 5×5×256×256=1.63M parameters.
+
+Two 3×3 filters (C3k2 style): 2×(3×3×256×256)=1.18M parameters.
+
+Result: C3k2 saves roughly 28% in parameters and memory while retaining the exact same feature-gathering capability, contributing to YOLOv11's ability to achieve higher mAP with 22% fewer parameters than YOLOv8m.
+
+3. C2PSA (Convolutional Block with Parallel Spatial Attention)
+
+Concept: A new spatial attention mechanism placed after the SPPF block. It mathematically forces the model to focus on critical regions of interest (like objects or lesions) while actively suppressing irrelevant background noise.
++3
+
+Formula (Attention Mechanism):
+
+Output=Feature_Map×Attention_Weight_Matrix
+(Where weights range dynamically from 0.0 to 1.0 based on learned importance)
+
+Example: In a noisy ultrasound image, C2PSA evaluates the feature map. It assigns a low attention weight (e.g., 0.05) to the background speckle noise, effectively multiplying it out of existence. Conversely, it assigns a high weight (e.g., 0.95) to the distinct texture of a thyroid nodule, highlighting it perfectly for the detection head.
+
